@@ -1,0 +1,13 @@
+<div *ngIf="data">
+
+  <h2>{{ data.name | uppercase }} Details</h2>
+  <div><span>id: </span>{{data.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="data.name" placeholder="name"/>
+    </label>
+  </div>
+
+</div>
+
+<button (click)="goBack()">go back</button>
