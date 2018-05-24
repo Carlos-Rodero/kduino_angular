@@ -19,7 +19,6 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.getData();
     this.getMap();
   }
 /*
@@ -28,7 +27,8 @@ export class DashboardComponent implements OnInit {
       .subscribe(data => this.data_list = data.slice(1, 5));
   }*/
 
-  getMap() {
+  getMap() 
+  {
     //var mymap = L.map('mapid').setView([51.505, -0.09], 13);
   }
 
