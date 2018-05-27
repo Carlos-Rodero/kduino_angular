@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 import { Data } from './data';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import { DATAS } from './mock-datas';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class DataService {
 
-  private natusferaUrl_observations = '/observations.json';  // URL to web api
+  private data_url = 'http://xarlie32.pythonanywhere.com/api/data';  // URL to web api
   private natusferaUrl_id_observations = '/observations';  // URL to web api
 
   constructor(
@@ -18,7 +17,7 @@ export class DataService {
 
   /** GET data from the server */
   getData(): Observable<Data[]> {
-    return this.http.get<Data[]>(this.natusferaUrl_observations)
+    return this.http.get<Data[]>(this.data_url)
       .pipe(
         catchError(this.handleError('getData', []))
       );
@@ -32,8 +31,7 @@ export class DataService {
       catchError(this.handleError<Data>(`getDataUnique id=${id}`))
     );
   }
-
-  /* GET heroes whose name contains search term */
+/*
   searchData(term: string): Observable<Data[]> {
     if (!term.trim()) {
       // if not search term, return empty hero array.
@@ -43,6 +41,7 @@ export class DataService {
       catchError(this.handleError<Data[]>('searchData', []))
     );
   }
+  */
 
   /**
  * Handle Http operation that failed.

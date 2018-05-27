@@ -1,8 +1,0 @@
-{
-    "/observations": {
-        "target": "http://natusfera.gbif.es/",
-        "secure": false,
-        "logLevel": "debug",
-        "changeOrigin": true
-    }
-}

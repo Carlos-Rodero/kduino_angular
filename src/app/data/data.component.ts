@@ -20,8 +20,10 @@ export class DataComponent implements OnInit {
   }
 
   getData(): void {
-    this.dataService.getData()
-    .subscribe(data => this.data_list = data);
+    this.dataService.getData().subscribe(data => {
+      this.data_list = data;
+      console.log(data);
+    });
   }
 
 }

@@ -1,4 +1,12 @@
 export class Data {
-    id: number;
-    name: string;
-  }
+  name: string;
+  ip: string;
+  mac: string;
+  depth: number;
+  measurement_time: number;
+  timestamp: string;
+  latitude: number;
+  longitude: number;
+
+
+}
