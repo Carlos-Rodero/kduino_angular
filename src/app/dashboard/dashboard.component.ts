@@ -3,7 +3,8 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { icon, latLng, marker, polyline, tileLayer } from 'leaflet';
 import { Data } from '../data';
 import { DataService } from '../data.service';
-import L = require('leaflet');
+import * as myGlobals from "../globals";
+//import L = require('leaflet');
 
 @Component({
   selector: 'app-dashboard',
@@ -43,7 +44,7 @@ export class DashboardComponent implements OnInit {
         if (!this.timestamp_list.includes(element.timestamp)) {
           this.timestamp_list.push(element.timestamp);
 
-          var marker = L.marker([element.latitude, element.longitude], {
+          var marker = myGlobals.GlobalVariable.L.marker([element.latitude, element.longitude], {
             icon: icon({
               iconSize: [25, 41],
               iconAnchor: [13, 41],
@@ -53,7 +54,7 @@ export class DashboardComponent implements OnInit {
           }).addTo(this.mymap);
 
           var popupOptions = {};
-          var popup = L.popup(popupOptions, marker);
+          var popup = myGlobals.GlobalVariable.L.popup(popupOptions, marker);
 
           this.mymap.on('popupopen', function (e) {
             var marker = e.popup._source;
@@ -71,10 +72,10 @@ export class DashboardComponent implements OnInit {
   }
 
   load_map() {
-    this.mymap = L.map('leafletmap').setView([20.0, 5.0], 2);
+    this.mymap = myGlobals.GlobalVariable.L.map('leafletmap').setView([20.0, 5.0], 2);
 
     //Set Map-Layer
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+    myGlobals.GlobalVariable.L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
       maxZoom: 20,
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
         '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +

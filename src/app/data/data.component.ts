@@ -17,7 +17,7 @@ export class DataComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getData();
+    //this.getData();
   }
 
   getData(): void {

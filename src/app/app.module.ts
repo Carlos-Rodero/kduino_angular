@@ -13,6 +13,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DataSearchComponent } from './data-search/data-search.component';
 import { ChartComponent } from './chart/chart.component';
+import { FilesComponent } from './files/files.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ChartComponent } from './chart/chart.component';
     DataDetailComponent,
     DashboardComponent,
     DataSearchComponent,
-    ChartComponent
+    ChartComponent,
+    FilesComponent
   ],
   imports: [
     BrowserModule,
