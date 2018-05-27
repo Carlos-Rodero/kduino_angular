@@ -9,8 +9,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class DataService {
 
   private data_url = 'http://xarlie32.pythonanywhere.com/api/data';  // URL to web api
-  private natusferaUrl_id_observations = '/observations';  // URL to web api
-
+  
   constructor(
     private http: HttpClient
   ) { }
@@ -23,25 +22,28 @@ export class DataService {
       );
   }
 
+  
   /** GET data by id. Will 404 if id not found */
-  getDataUnique(id: number): Observable<Data> {
-    const url = `${this.natusferaUrl_id_observations}/${id}.json`;
+  
+  getDataUnique(id: string): Observable<Data[]> {
+    const url = `${this.data_url}/${id}`;
     // TODO: send the message _after_ fetching the hero
-    return this.http.get<Data>(url).pipe(
-      catchError(this.handleError<Data>(`getDataUnique id=${id}`))
+    return this.http.get<Data[]>(url).pipe(
+      catchError(this.handleError<Data[]>(`getDataUnique id=${id}`))
     );
   }
-/*
+  
+
   searchData(term: string): Observable<Data[]> {
     if (!term.trim()) {
       // if not search term, return empty hero array.
       return of([]);
     }
-    return this.http.get<Data[]>(`${this.natusferaUrl_observations}?taxon_name=${term}`).pipe(
+    return this.http.get<Data[]>(`${this.data_url}?name=${term}`).pipe(
       catchError(this.handleError<Data[]>('searchData', []))
     );
   }
-  */
+  
 
   /**
  * Handle Http operation that failed.

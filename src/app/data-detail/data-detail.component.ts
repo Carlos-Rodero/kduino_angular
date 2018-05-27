@@ -12,7 +12,8 @@ import { Data } from '../data';
 })
 export class DataDetailComponent implements OnInit {
 
-  @Input() data: Data;
+  data: Array<Data>;
+  name: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,9 +26,15 @@ export class DataDetailComponent implements OnInit {
   }
   
   getDataUnique(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.dataService.getDataUnique(id)
-      .subscribe(data => this.data = data);
+      .subscribe(data => {
+        this.data = data;
+        this.data.forEach(element => {
+          this.name = element.name;
+        });
+      });
+
   }
 
   goBack(): void {

@@ -19,6 +19,9 @@ import { DataService } from '../data.service';
 export class DataSearchComponent implements OnInit {
 
   data$: Observable<Data[]>;
+  data_final: Array<any> = [];
+  searchValue: any;
+
   private searchTerms = new Subject<string>();
 
   constructor(private dataService: DataService) { }
@@ -28,8 +31,22 @@ export class DataSearchComponent implements OnInit {
     this.searchTerms.next(term);
   }
 
-
   ngOnInit() {
+    this.data$ = this.searchTerms.pipe(
+      // wait 300ms after each keystroke before considering the term
+      debounceTime(300),
+
+      // ignore new term if same as previous term
+      distinctUntilChanged(),
+
+      // switch to new search observable each time the term changes
+      switchMap((term: string) => this.dataService.searchData(term)),
+    );
+  }
+
+  onClear() {
+    this.searchValue = ""
+    this.search("");
   }
 
 }

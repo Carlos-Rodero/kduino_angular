@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { icon, latLng, marker, polyline, tileLayer } from 'leaflet';
 import { Data } from '../data';
@@ -8,7 +8,8 @@ import L = require('leaflet');
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent implements OnInit {
 
@@ -23,8 +24,11 @@ export class DashboardComponent implements OnInit {
   tempMarker: any;
   markersname: any;
 
+  link: null;
+  is_data: boolean = false;
 
-  constructor(private dataService: DataService, private leafletModule: LeafletModule) {
+  constructor(private dataService: DataService, private leafletModule: LeafletModule,
+    private cd: ChangeDetectorRef) {
   }
 
   ngOnInit() {
@@ -37,8 +41,6 @@ export class DashboardComponent implements OnInit {
       this.data_list = data;
       this.data_list.forEach(element => {
         if (!this.timestamp_list.includes(element.timestamp)) {
-          console.log(element.name);
-
           this.timestamp_list.push(element.timestamp);
 
           var marker = L.marker([element.latitude, element.longitude], {
@@ -48,11 +50,21 @@ export class DashboardComponent implements OnInit {
               iconUrl: 'leaflet/marker-icon.png',
               shadowUrl: 'leaflet/marker-shadow.png'
             })
-          }).bindPopup("<b>Hello world!</b><br />I am " + element.name).addTo(this.mymap);
-          marker._name = element.name;
-          marker.on("popupopen", function (e){
-              console.log(this._name);
-          });  
+          }).addTo(this.mymap);
+
+          var popupOptions = {};
+          var popup = L.popup(popupOptions, marker);
+
+          this.mymap.on('popupopen', function (e) {
+            var marker = e.popup._source;
+          });
+
+          marker
+            .bindPopup(element.name)
+            .on('popupopen', function (popup) {
+              this.is_data = true;
+              this.link = popup.target._popup._content;
+            });
         }
       });
     });

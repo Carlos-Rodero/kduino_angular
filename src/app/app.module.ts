@@ -12,6 +12,7 @@ import { DataDetailComponent } from './data-detail/data-detail.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DataSearchComponent } from './data-search/data-search.component';
+import { ChartComponent } from './chart/chart.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { DataSearchComponent } from './data-search/data-search.component';
     DataComponent,
     DataDetailComponent,
     DashboardComponent,
-    DataSearchComponent
+    DataSearchComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,

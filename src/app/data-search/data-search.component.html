@@ -1,12 +1,10 @@
-<div id="search-component">
-    <h4>Data Search</h4>
-  
-    <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
-  
+<div id="search-component">  
+    <input  [(ngModel)]="searchValue" #searchBox id="search-box" (keyup)="search(searchBox.value)" input type="text" placeholder="Search.." name="search">
+    <button type="submit"><i class="fa fa-search"></i></button>
     <ul class="search-result">
       <li *ngFor="let elem of data$ | async" >
-        <a routerLink="/detail/{{elem.id}}">
-          {{elem.id}}
+        <a routerLink="/detail/{{elem.name}}" (click)="onClear()">
+          {{elem.name}} 
         </a>
       </li>
     </ul>

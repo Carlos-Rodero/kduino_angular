@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit, Input } from '@angular/core';
 import { Data } from '../data';
 import { DataService } from '../data.service';
 
@@ -10,6 +10,7 @@ import { DataService } from '../data.service';
 export class DataComponent implements OnInit {
 
   data_list: Data[];
+  @Input('parentData') incomingData: string;
 
   constructor(
     private dataService: DataService
