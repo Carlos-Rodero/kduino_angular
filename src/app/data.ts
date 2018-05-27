@@ -7,6 +7,6 @@ export class Data {
   timestamp: string;
   latitude: number;
   longitude: number;
-
+  values: Array<any>;
 
 }

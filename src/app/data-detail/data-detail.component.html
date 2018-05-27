@@ -1,7 +1,16 @@
 <div *ngIf="data">
-  <h2>{{ name | uppercase }} Details</h2>
+    <h2>{{ name | uppercase }} Details</h2>
 </div>
 
-<app-chart></app-chart>
+<button (click)="generatePlot()">Plot</button>
+
+
+<div #chart>
+</div>
+
+
+<!--
+<app-chart [data]=data_prova></app-chart>
+-->
 
 <button class="back" (click)="goBack()">go back</button>

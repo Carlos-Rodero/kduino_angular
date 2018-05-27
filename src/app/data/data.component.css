@@ -43,3 +43,8 @@
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
 }
+
+h2 {
+    text-align: center; margin-bottom: 0;
+    color:rgb(11, 70, 97);
+}
