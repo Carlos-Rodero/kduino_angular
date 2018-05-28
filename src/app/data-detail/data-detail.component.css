@@ -5,7 +5,7 @@ button {
     border-radius: 4px;
     cursor: pointer; cursor: hand;
     padding: 1em;
-    margin-left: 3em;
+    margin-left: 1em;
 }
 
 button:hover {
@@ -23,13 +23,13 @@ h2 {
     color:rgb(11, 70, 97);
 }
 
-#chart {
-    padding: 3em;
-    text-align: center; margin-bottom: 0;
+.chart {
+    padding: 4em;
 }
 
 .back {
     margin-top: 6em;
     
 }
+
 

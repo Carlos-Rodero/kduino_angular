@@ -9,7 +9,6 @@ import { DataChart } from '../data_chart';
 
 @Component({
     selector: 'app-data-detail',
-
     templateUrl: './data-detail.component.html',
     styleUrls: ['./data-detail.component.css']
 })
@@ -63,32 +62,38 @@ export class DataDetailComponent implements OnInit {
         var values = [];
 
         this.data.forEach(element => {
-            this.data_chart.depth = [+element.depth, +element.depth + 0.2];
-            values_array = element.values;
+            this.data_chart.depth = [+element.depth, +element.depth + 0.7];
+            values_array.push(element.values);
         });
 
         this.data_chart.depth.forEach(element => {
-            count = [], luxx = [], temp = [], red = [], green = [], blue = [], clear = [];
 
             values_array.forEach(element => {
+                count = [], luxx = [], temp = [], red = [], green = [], blue = [], clear = [];
                 values = element;
-                count.push([Number(element[0].count), Number(element[0].count)]);
-                luxx.push([Number(element[1].luxx), Number(element[1].luxx)]);
-                temp.push([Number(element[2].temp), Number(element[2].temp)]);
-                red.push([Number(element[3].red), Number(element[3].red)]);
-                green.push([Number(element[4].green), Number(element[4].green)]);
-                blue.push([Number(element[5].blue), Number(element[5].blue)]);
-                clear.push([Number(element[6].clear), Number(element[6].clear)]);
+
+                values.forEach(val => {
+
+                    count.push([Number(val[0].count), Number(val[0].count)]);
+                    luxx.push([Number(val[1].temp), Number(val[1].temp)]);
+                    temp.push([Number(val[2].luxx), Number(val[2].luxx)]);
+                    red.push([Number(val[3].red), Number(val[3].red)]);
+                    green.push([Number(val[4].green), Number(val[4].green)]);
+                    blue.push([Number(val[5].blue), Number(val[5].blue)]);
+                    clear.push([Number(val[6].clear), Number(val[6].clear)]);
+                });
+                this.data_chart.count = count;
+                this.data_chart.luxx = luxx;
+                this.data_chart.temp = temp;
+                this.data_chart.red = red;
+                this.data_chart.green = green;
+                this.data_chart.blue = blue;
+                this.data_chart.clear = clear;
             });
 
-            this.data_chart.count = count;
-            this.data_chart.luxx = luxx;
-            this.data_chart.temp = temp;
-            this.data_chart.red = red;
-            this.data_chart.green = green;
-            this.data_chart.blue = blue;
-            this.data_chart.clear = clear;
+
         });
+        console.log(this.data_chart);
     }
 
     chart() {

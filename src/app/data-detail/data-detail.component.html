@@ -2,10 +2,11 @@
     <h2>{{ name | uppercase }} Details</h2>
 </div>
 
+<button class="back" (click)="goBack()">go back</button>
 <button (click)="generatePlot()">Plot</button>
 
 
-<div #chart>
+<div #chart class="chart">
 </div>
 
 
@@ -13,4 +14,3 @@
 <app-chart [data]=data_prova></app-chart>
 -->
 
-<button class="back" (click)="goBack()">go back</button>

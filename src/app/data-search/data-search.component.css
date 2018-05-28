@@ -1,4 +1,4 @@
-/* HeroSearch private styles */
+
 .search-result li {
     border-bottom: 1px solid gray;
     border-left: 1px solid gray;
@@ -39,45 +39,30 @@
 
 
   #search-component {
-  float: right;
+  
 }
+
+#search-box {
+    width: 100%;
+  }
 
 input[type=text] {
   padding: 6px;
-  margin-top: 8px;
+  margin-top: 6px;
+  margin-bottom: 2px;
   font-size: 17px;
   border: none;
 }
 
 #search-component button {
   float: right;
-  padding: 6px 10px;
-  margin-top: 8px;
-  margin-right: 16px;
+  cursor: pointer;
   background: #ddd;
   font-size: 17px;
   border: none;
-  cursor: pointer;
+
 }
 
 #search-component button:hover {
   background: #ccc;
-}
-
-@media screen and (max-width: 600px) {
-.search-container {
-    float: none;
-  }
-input[type=text], #search-component button {
-    float: none;
-    display: block;
-    text-align: left;
-    width: 100%;
-    margin: 0;
-    padding: 14px;
-  }
-
-input[type=text] {
-    border: 1px solid #ccc;  
-  }
 }

@@ -1,6 +1,5 @@
 <div id="search-component">  
     <input  [(ngModel)]="searchValue" #searchBox id="search-box" (keyup)="search(searchBox.value)" input type="text" placeholder="Search.." name="search">
-    <button type="submit"><i class="fa fa-search"></i></button>
     <ul class="search-result">
       <li *ngFor="let elem of data$ | async" >
         <a routerLink="/detail/{{elem.name}}" (click)="onClear()">

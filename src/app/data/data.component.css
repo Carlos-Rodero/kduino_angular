@@ -48,3 +48,10 @@ h2 {
     text-align: center; margin-bottom: 0;
     color:rgb(11, 70, 97);
 }
+
+.find {
+    width: 50%;
+    margin: auto;
+    padding-top: 3em;
+
+}
